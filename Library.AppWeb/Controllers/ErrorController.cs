@@ -12,6 +12,13 @@ namespace Library.AppWeb.Controllers
             _logger = logger;
         }
 
+        [Route("/Error/NotFound")]
+        public IActionResult NotFoundPage()
+        {
+            Response.StatusCode = 404;
+            return View("NotFound");
+        }
+
         [Route("/Error/ServerError")]
         public IActionResult ServerError()
         {

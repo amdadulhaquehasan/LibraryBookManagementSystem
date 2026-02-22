@@ -1,6 +1,8 @@
+using Library.Domain.Exceptions;
 using Library.Infrastructure.Data;
 using Library.Infrastructure.Repositories;
 using Library.Infrastructure.Repositories.Interface;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +17,8 @@ builder.Services.AddDbContext<LibraryBookDbContext>(options =>
 builder.Services.AddScoped<IBookRepository, BookRepository>();
 
 var app = builder.Build();
+
+app.UseStatusCodePagesWithReExecute("/Error/NotFound");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

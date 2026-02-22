@@ -71,7 +71,7 @@ namespace Library.AppWeb.Controllers
 
             if (book == null)
             {
-                throw new BookNotFoundException(id);
+                return NotFound();
             }
 
             return View(book);
