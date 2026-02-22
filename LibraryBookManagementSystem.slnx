@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="Library.AppWeb/Library.AppWeb.csproj" />
+  <Project Path="Library.Domain/Library.Domain.csproj" />
+  <Project Path="Library.Infrastructure/Library.Infrastructure.csproj" />
+</Solution>
