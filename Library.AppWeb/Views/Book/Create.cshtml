@@ -1,0 +1,71 @@
+﻿@model Library.Domain.Entity.Book
+
+@{
+    ViewData["Title"] = "Add Book";
+}
+
+@using Library.Domain
+@using Library.Domain.Enum
+
+<div class="container mt-4">
+
+    <div class="card shadow">
+        <div class="card-header bg-success text-white">
+            <h4><i class="fa fa-plus"></i> Add New Book</h4>
+        </div>
+
+        <div class="card-body">
+
+            <form asp-action="Create" method="post">
+                @Html.AntiForgeryToken()
+
+                <div asp-validation-summary="All" class="text-danger"></div>
+
+                <div class="mb-3">
+                    <label asp-for="Title" class="form-label"></label>
+                    <input asp-for="Title" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="ISBN" class="form-label"></label>
+                    <input asp-for="ISBN" class="form-control" />
+                    <span asp-validation-for="ISBN" class="text-danger"></span>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="PublicationYear"></label>
+                        <input asp-for="PublicationYear" class="form-control" />
+                        <span asp-validation-for="PublicationYear" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Pages"></label>
+                        <input asp-for="Pages" class="form-control" />
+                        <span asp-validation-for="Pages" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Genre"></label>
+                    <select asp-for="Genre"
+                            asp-items="Html.GetEnumSelectList<Genre>()"
+                            class="form-select"></select>
+                </div>
+
+                <div class="form-check mb-3">
+                    <input asp-for="IsAvailable" class="form-check-input" />
+                    <label asp-for="IsAvailable" class="form-check-label"></label>
+                </div>
+
+                <div class="text-end">
+                    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+                    <button class="btn btn-success">Save</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+</div>
